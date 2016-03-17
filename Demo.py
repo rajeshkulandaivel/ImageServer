@@ -104,7 +104,23 @@ def GetName(str1):
 	url = "http://accessapi.mybluemix.net/name/?faceid=" + pid
 	response = requests.get('http://accessapi.mybluemix.net/name/?faceid=111f40e3-ea94-4b5a-aa21-831d8f22d381')
 	print(response.content)
-	return " "
+        data = response.read()
+
+        words = data.split(",")
+        for word in words:
+	        # print the word	
+		innerwords = word.split(":")
+	        for innerword in innerwords:
+			if(found_conf==True):
+				innerword = innerword.replace("}","")
+				innerword = innerword.replace("]","")
+				print(float(innerword))
+				found_conf=False
+				return (innerword)
+			if(innerword == "\"name\""):
+				found_conf=True
+	
+
 ###########################################
 try:
 	
