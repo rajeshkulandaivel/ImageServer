@@ -10,7 +10,7 @@ conn=None
 data=None
 Global_Confidence = 0.0
 current_time = 0.0
-
+pid = "" 
 
 body="{\"personGroupId\":\"123456\",\"faceIds\":[ \"23bb2de8-7ef6-4c49-a828-7bdd410bfc89\"],\"maxNumOfCandidatesReturned\":1}";
 
@@ -56,6 +56,7 @@ def FaceDetect(url):
 
 def FaceIdentify(groupid, faceid):
     found_conf = False
+    found_pid = False
     print "In FaceIdentify" 
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
     body="{\"personGroupId\":\"1234\",\"faceIds\""
@@ -80,8 +81,18 @@ def FaceIdentify(groupid, faceid):
 			print(float(innerword))
 			found_conf=False
 			return float(innerword)
+		if(found_pid==True):
+			innerword = innerword.replace("}","")
+			innerword = innerword.replace("]","")
+			print(innerword)
+			found_pid=False
+			global pid
+			pid = innerword
+		
 		if(innerword == "\"confidence\""):
 			found_conf=True
+		if(innerword == "[{\"personId\""):
+			found_pid=True
     conn.close()
     return
 
@@ -96,6 +107,7 @@ try:
 	GPIO.setup(36,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 	client = None
 	image_path = ""
+	global pid
 	while 1:
  		#print (GPIO.input(36))
 	        if((GPIO.input(36)) ==1):
@@ -119,7 +131,7 @@ try:
                         os.system('python Update.py')
 			SearchFaceId = FaceDetect("test")
 			if(FaceIdentify(body, SearchFaceId) >0.5):
-				print ("Matchfound:" + GetName(SearchFaceId))
+				print ("Matchfound:" + GetName(pid))
                         else:
                                 print("Unknown face")
 					
