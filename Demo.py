@@ -107,6 +107,7 @@ def GetName(str):
 	print (url1)
 	response = requests.get('http://accessapi.mybluemix.net/name/?faceid=111f40e3-ea94-4b5a-aa21-831d8f22d381')
 	print(response.content)
+	return
 ###########################################
 try:
 	
