@@ -133,7 +133,7 @@ try:
                         os.system('python Update.py')
 			SearchFaceId = FaceDetect("test")
 			if(FaceIdentify(body, SearchFaceId) >0.5):
-				pid  = pid.replace('"',"")
+				pid  = pid.replace('"'," ")
 				pid= pid.strip()
 				#print(pid[:-1])
 				print ("Matchfound:" + GetName(pid))
