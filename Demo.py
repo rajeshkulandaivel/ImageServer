@@ -11,6 +11,7 @@ data=None
 Global_Confidence = 0.0
 current_time = 0.0
 
+
 body="{\"personGroupId\":\"123456\",\"faceIds\":[ \"23bb2de8-7ef6-4c49-a828-7bdd410bfc89\"],\"maxNumOfCandidatesReturned\":1}";
 
 headers = {
@@ -85,7 +86,9 @@ def FaceIdentify(groupid, faceid):
     return
 
 def GetName(str):
-	return "Rajesh"
+	url = "http://accessapi.mybluemix.net/name/?faceid=" + str
+	response = requests.get(url)
+	print(response)
 ###########################################
 try:
 	
@@ -116,7 +119,7 @@ try:
                         os.system('python Update.py')
 			SearchFaceId = FaceDetect("test")
 			if(FaceIdentify(body, SearchFaceId) >0.5):
-				print ("Matchfound:" + GetName(1))
+				print ("Matchfound:" + GetName(SearchFaceId))
                         else:
                                 print("Unknown face")
 					
