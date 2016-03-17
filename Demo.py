@@ -131,6 +131,7 @@ try:
                         os.system('python Update.py')
 			SearchFaceId = FaceDetect("test")
 			if(FaceIdentify(body, SearchFaceId) >0.5):
+				print(pid)
 				print ("Matchfound:" + GetName(pid))
                         else:
                                 print("Unknown face")
