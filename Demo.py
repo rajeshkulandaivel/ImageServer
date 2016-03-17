@@ -28,8 +28,8 @@ def FaceDetect(url):
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
     conn.request("POST", "/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false" , facedetectbody, headers)
     response = conn.getresponse()
-    print response
     data = response.read()
+    print data
     words = data.split(",")
 
     for word in words:
