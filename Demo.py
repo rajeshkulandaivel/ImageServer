@@ -4,7 +4,7 @@ import picamera
 from RPi import GPIO
 from subprocess import call
 from time import time
-
+import requests
 import os
 conn=None
 data=None
