@@ -40,7 +40,7 @@ def FaceDetect(url):
 		if(found_conf==True):
 			innerword = innerword.replace("}","")
 			innerword = innerword.replace("]","")
-			return float(innerword)
+
 			print(innerword)
 			found_conf=False
 		if(innerword == "[{\"faceId\""):
