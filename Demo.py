@@ -52,6 +52,7 @@ def FaceDetect(url):
 def FaceIdentify(groupid, faceid):
     found_conf = False
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
+    body="{\"personGroupId\":\"123456\",\"faceIds\":[ \"+ faceid+\"],\"maxNumOfCandidatesReturned\":1}";
     conn.request("POST", "/face/v1.0/identify" , body, headers)
     response = conn.getresponse()
     data = response.read()
@@ -64,9 +65,9 @@ def FaceIdentify(groupid, faceid):
 		if(found_conf==True):
 			innerword = innerword.replace("}","")
 			innerword = innerword.replace("]","")
-			return float(innerword)
 			print(float(innerword))
 			found_conf=False
+			return float(innerword)
 		if(innerword == "\"confidence\""):
 			found_conf=True
     conn.close()
