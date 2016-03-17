@@ -97,6 +97,7 @@ def FaceIdentify(groupid, faceid):
     return
 
 def GetName(str):
+	print ("inside get name")
 	url = "http://accessapi.mybluemix.net/name/?faceid=" + str
 	response = requests.get(url)
 	print(response)
