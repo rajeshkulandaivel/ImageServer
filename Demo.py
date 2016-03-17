@@ -105,7 +105,7 @@ def GetName(str):
 	url1=""
 	url1=url
 	print (url1)
-	response = requests.get(url)
+	response = requests.get(url1)
 	print(response)
 ###########################################
 try:
