@@ -40,9 +40,9 @@ def FaceDetect(url):
 		if(found_conf==True):
 			innerword = innerword.replace("}","")
 			innerword = innerword.replace("]","")
-
 			print(innerword)
 			found_conf=False
+                        return innerword
 		if(innerword == "[{\"faceId\""):
 			found_conf=True
 	conn.close()
@@ -98,8 +98,8 @@ try:
 			#os.system("git commit")
 			#os.system("git push")
                         os.system('python Update.py')
-			FaceDetect("test")
-			if(FaceIdentify(body, headers) >0.5):
+			SearchFaceId = FaceDetect("test")
+			if(FaceIdentify(body, SearchFaceId) >0.5):
 				print ("Matchfound:" + GetName(1))
 					
 	
