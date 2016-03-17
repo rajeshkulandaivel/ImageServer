@@ -59,6 +59,7 @@ def FaceIdentify(groupid, faceid):
     data = response.read()
     words = data.split(",")
     print "Got response in Face identify" 
+    print data
     for word in words:
         # print the word
 
