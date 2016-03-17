@@ -98,6 +98,7 @@ def FaceIdentify(groupid, faceid):
 
 def GetName(str):
 
+	str= str.strip()				
 	url = "http://accessapi.mybluemix.net/name/?faceid=" + str
 	print (url)
 	response = requests.get(url)
@@ -134,8 +135,7 @@ try:
 			SearchFaceId = FaceDetect("test")
 			if(FaceIdentify(body, SearchFaceId) >0.5):
 				pid  = pid.replace('"'," ")
-				pid= pid.strip()
-				pid=pid[:-1]
+				pid= pid.strip()				
 				print ("Matchfound:" + GetName(pid))
                         else:
                                 print("Unknown face")
