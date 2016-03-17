@@ -9,7 +9,7 @@ import os
 conn=None
 data=None
 Global_Confidence = 0.0
-current_time = 0.0
+current_time = ""
 pid = "" 
 
 body="{\"personGroupId\":\"123456\",\"faceIds\":[ \"23bb2de8-7ef6-4c49-a828-7bdd410bfc89\"],\"maxNumOfCandidatesReturned\":1}";
@@ -29,7 +29,7 @@ def FaceDetect(url):
   
 
     found_conf = False
-    facedetectbody="{\"url\":\"https://raw.githubusercontent.com/rajeshkulandaivel/ImageServer/master/" + str(current_time) + ".jpg" + "\"}"
+    facedetectbody="{\"url\":\"https://raw.githubusercontent.com/rajeshkulandaivel/ImageServer/master/" + current_time + ".jpg" + "\"}"
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
     conn.request("POST", "/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false" , facedetectbody, headers)
     response = conn.getresponse()
@@ -120,8 +120,8 @@ try:
 			if((GPIO.input(36))==1):
 				print("Detected")
                                 global current_time 
-				current_time = time()
-				image_path = "/home/pi/Desktop/Photoes/ImageServer/" + str(current_time) + ".jpg"
+				current_time = str(time())
+				image_path = "/home/pi/Desktop/Photoes/ImageServer/" + current_time + ".jpg"
 
 			with picamera.PiCamera() as camera:
 				camera.start_preview()
