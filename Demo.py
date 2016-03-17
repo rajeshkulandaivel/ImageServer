@@ -28,8 +28,10 @@ def FaceDetect(url):
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
     conn.request("POST", "/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false" , facedetectbody, headers)
     response = conn.getresponse()
+    print response
     data = response.read()
     words = data.split(",")
+
     for word in words:
         # print the word
 
@@ -96,6 +98,7 @@ try:
 			#os.system("git commit")
 			#os.system("git push")
                         os.system('python Update.py')
+			FaceDetect("test")
 			if(FaceIdentify(body, headers) >0.5):
 				print ("Matchfound:" + GetName(1))
 					
