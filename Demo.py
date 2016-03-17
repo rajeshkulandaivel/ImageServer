@@ -98,8 +98,10 @@ def FaceIdentify(groupid, faceid):
 
 def GetName(str):
 
+	global pid
+
 	str= str.strip()				
-	url = "http://accessapi.mybluemix.net/name/?faceid=" + str
+	url = "http://accessapi.mybluemix.net/name/?faceid=" + pid
 	print (url)
 	response = requests.get(url)
 	print(response)
