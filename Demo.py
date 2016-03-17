@@ -22,6 +22,29 @@ def FileUpload(Path):
 	return
 
 def FaceDetect(url):
+    url = "https://raw.githubusercontent.com/rajeshkulandaivel/ImageServer/master/image.jpg"
+    found_conf = False
+    facedetectbody="{\"personGroupId\":\"123456\",\"faceIds\":[ \"23bb2de8-7ef6-4c49-a828-7bdd410bfc89\"],\"maxNumOfCandidatesReturned\":1}";
+    conn = httplib.HTTPSConnection('api.projectoxford.ai')    
+    conn.request("POST", "/face/v1.0/detect" , facedetectbody, headers)
+    response = conn.getresponse()
+    data = response.read()
+    words = data.split(",")
+    for word in words:
+        # print the word
+
+	innerwords = word.split(":")
+        for innerword in innerwords:
+		if(found_conf==True):
+			innerword = innerword.replace("}","")
+			innerword = innerword.replace("]","")
+			return float(innerword)
+			print(float(innerword))
+			found_conf=False
+		if(innerword == "\"confidence\""):
+			found_conf=True
+	conn.close()
+
 	return
 
 def FaceIdentify(groupid, faceid):
