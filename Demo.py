@@ -108,6 +108,8 @@ try:
 			SearchFaceId = FaceDetect("test")
 			if(FaceIdentify(body, SearchFaceId) >0.5):
 				print ("Matchfound:" + GetName(1))
+                        else:
+                                print("Unknown face")
 					
 	
 	
