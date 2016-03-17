@@ -22,7 +22,7 @@ def FileUpload(Path):
 	return
 
 def FaceDetect(url):
-    url = "https://raw.githubusercontent.com/rajeshkulandaivel/ImageServer/master/image.jpg"
+  
     found_conf = False
     facedetectbody="{\"url\":\"https://raw.githubusercontent.com/rajeshkulandaivel/ImageServer/master/image.jpg\"}";
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
