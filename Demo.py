@@ -100,8 +100,7 @@ def GetName(str1):
 
 	global pid
 	found_conf = False
-
-
+        innerword = ""
 	url = "http://accessapi.mybluemix.net/name/?faceid=" + pid
 	response = requests.get('http://accessapi.mybluemix.net/name/?faceid=111f40e3-ea94-4b5a-aa21-831d8f22d381')
 	print(response.content)
