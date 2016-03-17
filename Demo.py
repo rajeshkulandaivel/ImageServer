@@ -51,12 +51,14 @@ def FaceDetect(url):
 
 def FaceIdentify(groupid, faceid):
     found_conf = False
+    print "In FaceIdentify" 
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
     body="{\"personGroupId\":\"123456\",\"faceIds\":[ + faceid+],\"maxNumOfCandidatesReturned\":1}";
     conn.request("POST", "/face/v1.0/identify" , body, headers)
     response = conn.getresponse()
     data = response.read()
     words = data.split(",")
+    print "Got response in Face identify" 
     for word in words:
         # print the word
 
