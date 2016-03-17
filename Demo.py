@@ -24,9 +24,9 @@ def FileUpload(Path):
 def FaceDetect(url):
     url = "https://raw.githubusercontent.com/rajeshkulandaivel/ImageServer/master/image.jpg"
     found_conf = False
-    facedetectbody="{\"personGroupId\":\"123456\",\"faceIds\":[ \"23bb2de8-7ef6-4c49-a828-7bdd410bfc89\"],\"maxNumOfCandidatesReturned\":1}";
+    facedetectbody="{\"url\":\"https://raw.githubusercontent.com/rajeshkulandaivel/ImageServer/master/image.jpg\"}";
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
-    conn.request("POST", "/face/v1.0/detect" , facedetectbody, headers)
+    conn.request("POST", "/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false" , facedetectbody, headers)
     response = conn.getresponse()
     data = response.read()
     words = data.split(",")
