@@ -112,8 +112,7 @@ def GetName(str1):
 	        for innerword in innerwords:
 			if(found_conf==True):
 				innerword = innerword.replace("}","")
-				innerword = innerword.replace("]","")
-				print(float(innerword))
+				innerword = innerword.replace("]","")			
 				found_conf=False
 				return (innerword)
 			if(innerword == "\"name\""):
