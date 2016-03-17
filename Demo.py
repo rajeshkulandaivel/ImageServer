@@ -134,7 +134,8 @@ try:
 			SearchFaceId = FaceDetect("test")
 			if(FaceIdentify(body, SearchFaceId) >0.5):
 				pid  = pid.replace('"',"")
-				print(pid[:-1])
+				pid= pid.strip()
+				#print(pid[:-1])
 				print ("Matchfound:" + GetName(pid))
                         else:
                                 print("Unknown face")
