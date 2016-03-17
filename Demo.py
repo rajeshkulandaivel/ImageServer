@@ -99,6 +99,7 @@ def FaceIdentify(groupid, faceid):
 def GetName(str1):
 
 	global pid
+	found_cond = False
 
 
 	url = "http://accessapi.mybluemix.net/name/?faceid=" + pid
