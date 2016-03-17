@@ -53,7 +53,7 @@ def FaceIdentify(groupid, faceid):
     found_conf = False
     print "In FaceIdentify" 
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
-    body="{\"personGroupId\":\"123456\",\"faceIds\""
+    body="{\"personGroupId\":\"1234\",\"faceIds\""
     body = body + ":[" + faceid + "],"
     body = body + "\"maxNumOfCandidatesReturned\":1}"
     print body
@@ -63,6 +63,7 @@ def FaceIdentify(groupid, faceid):
     words = data.split(",")
     print "Got response in Face identify" 
     print data
+    print "+++++++++++" 
     for word in words:
         # print the word
 
