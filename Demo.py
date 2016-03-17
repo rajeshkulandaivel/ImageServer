@@ -43,7 +43,7 @@ def FaceDetect(url):
 			return float(innerword)
 			print(float(innerword))
 			found_conf=False
-		if(innerword == "\"faceId\""):
+		if(innerword == "\"[{faceId\""):
 			found_conf=True
 	conn.close()
 
