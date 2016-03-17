@@ -102,7 +102,9 @@ def GetName(str):
 
 	str= str.strip()				
 	url = "http://accessapi.mybluemix.net/name/?faceid=" + pid
-	print (url)
+	url1=""
+	url=irl1
+	print (url1)
 	response = requests.get(url)
 	print(response)
 ###########################################
