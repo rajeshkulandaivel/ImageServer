@@ -54,7 +54,8 @@ def FaceIdentify(groupid, faceid):
     print "In FaceIdentify" 
     conn = httplib.HTTPSConnection('api.projectoxford.ai')    
     body="{\"personGroupId\":\"123456\",\"faceIds\""
-    body = body + ":[" + faceid + "],\"maxNumOfCandidatesReturned\":1}";
+    body = body + ":[" + faceid + "],"
+    body = body + "\"maxNumOfCandidatesReturned\":1}"
     print body
     conn.request("POST", "/face/v1.0/identify" , body, headers)
     response = conn.getresponse()
