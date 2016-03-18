@@ -156,6 +156,7 @@ try:
                                 os.system('python TTS.py '+ GetName(pid))
                         else:
                                 print("Unknown face")
+                                os.system('python TTS.py '+ "Please wait, Someone will attend you")
 					
 	
 	
