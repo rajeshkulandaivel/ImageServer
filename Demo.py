@@ -131,7 +131,7 @@ try:
 	image_path = ""
 	global pid
 	while 1:
- 		print (GPIO.input(36))
+ 		#print (GPIO.input(36))
 	        if((GPIO.input(36)) ==1):
 			sleep(1)
 			if((GPIO.input(36))==1):
