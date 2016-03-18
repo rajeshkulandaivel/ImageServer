@@ -158,7 +158,7 @@ try:
 				pid  = pid.replace('"'," ")
 				pid= pid.strip()				
 				print ("Matchfound:" + GetName(pid))
-                                os.system('python TTS.py ' + GetName(pid))
+                                os.system('python TTS.py ' +"Welcome "+ GetName(pid))
 				GPIO.output(33,GPIO.HIGH)
                         else:
                                 print("Unknown face")
