@@ -123,7 +123,10 @@ def GetName(str1):
 try:
 	
 	GPIO.setmode(GPIO.BOARD)
+	GPIO.setwarnings(False)
 	GPIO.setup(36,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
+	GPIO.setup(33,GPIO.OUT)
+	GPIO.setup(31,GPIO.OUT)
 	client = None
 	image_path = ""
 	global pid
@@ -136,6 +139,8 @@ try:
                                 global current_time 
 				current_time = str(time())
 				image_path = "/home/pi/Desktop/Photoes/ImageServer/" + current_time + ".jpg"
+				GPIO.output(31,GPIO.LOW)
+				GPIO.output(33,GPIO.LOW)
 
 			with picamera.PiCamera() as camera:
 				camera.start_preview()
@@ -154,8 +159,10 @@ try:
 				pid= pid.strip()				
 				print ("Matchfound:" + GetName(pid))
                                 os.system('python TTS.py '+ GetName(pid))
+				GPIO.output(33,GPIO.HIGH)
                         else:
                                 print("Unknown face")
+				GPIO.output(31,GPIO.HIGH)
                                 os.system('python TTS.py '+ "Please wait, Someone will attend you")
 					
 	
