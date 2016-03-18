@@ -163,6 +163,7 @@ try:
                         else:
                                 print("Unknown face")
 				GPIO.output(31,GPIO.HIGH)
+				sleep(5)
                                 os.system('python TTS.py '+ "Please wait, Someone will attend you")
 					
 	
